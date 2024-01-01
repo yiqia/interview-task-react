@@ -1,0 +1,24 @@
+.table {
+  box-sizing: border-box;
+  background-color: #fff;
+  border-spacing: 0;
+  &-th {
+    color: rgba(0, 0, 0, 0.2);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    padding: 10px 25px;
+  }
+  &-tr {
+    border-color: inherit;
+    &:hover {
+      background-color: #f1f2f2;
+    }
+    &-td {
+      box-sizing: border-box;
+      border-bottom: 3px solid #F1F2F2;
+      padding: 18px 25px;
+    }
+  }
+}
