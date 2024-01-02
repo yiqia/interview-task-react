@@ -1,7 +1,7 @@
 export const FILTER_OPTIONS = [
   {
     content: "All Categories",
-    value: "All Categories",
+    value: "",
   },
   {
     content: "Hot Dishes",
@@ -23,4 +23,4 @@ export const FILTER_OPTIONS = [
     content: "Soups",
     value: "Soups",
   },
-]
+];

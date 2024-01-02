@@ -1,14 +1,15 @@
-import { FC, ReactNode, useState } from "react";
+import { FC, useState } from "react";
 import classNames from "classnames";
 
 import "./FilterBtn.scss";
+import { DropdownOptionItem } from "../dropdown/Dropdown";
 
 export interface FilterBtnProps {
-  value: string | ReactNode;
+  option: DropdownOptionItem;
   onIsActive?: (isActive: boolean) => void;
 }
 
-const FilterBtn: FC<FilterBtnProps> = ({ value, onIsActive }) => {
+const FilterBtn: FC<FilterBtnProps> = ({ option, onIsActive }) => {
   const [isActive, setIsActive] = useState(false);
 
   const onFilterBtnClick = () => {
@@ -18,7 +19,7 @@ const FilterBtn: FC<FilterBtnProps> = ({ value, onIsActive }) => {
 
   return (
     <div className="filter-btn" onClick={onFilterBtnClick}>
-      <div className="filter-btn__text">{value}</div>
+      <div className="filter-btn__text">{option.content}</div>
       <img
         className={classNames("filter-btn__icon", {
           "filter-btn__icon--up": !isActive,

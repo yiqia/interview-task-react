@@ -1,4 +1,4 @@
-import { ReactNode, useMemo, useState } from "react";
+import { useState } from "react";
 
 import Table from "./components/table";
 import Search from "./components/search";
@@ -7,8 +7,10 @@ import Pagination from "./components/pagination";
 import { DropdownItemClickType } from "./components/dropdown/DropdownMenu";
 import Dropdown from "./components/dropdown";
 import { FILTER_OPTIONS } from "./constants/filter";
+import { DropdownOptionItem } from "./components/dropdown/Dropdown";
 
-import { columns, data } from "./mock/table";
+import { usePaginationAndFiltering } from "./hooks/usePaginationAndFiltering";
+import { columns } from "./mock/table";
 
 import "./App.scss";
 
@@ -18,16 +20,18 @@ function App() {
     setSearchValue(value);
   };
 
-  const [filterValue, setFilterValue] = useState<ReactNode | string>(
-    FILTER_OPTIONS[0].content
+  const [filterOption, setFilterOption] = useState<DropdownOptionItem>(
+    FILTER_OPTIONS[0]
   );
 
-  useMemo(() => {
-    console.log(searchValue);
-  }, [searchValue]);
+  const { paginatedData, totalPages, currentPage, setCurrentPage } =
+    usePaginationAndFiltering(filterOption.value, searchValue, {
+      pageNum: 1,
+      pageSize: 5,
+    });
 
   const onFilterItemClick: DropdownItemClickType = (item) => {
-    setFilterValue(item.content);
+    setFilterOption(item);
   };
 
   return (
@@ -46,16 +50,20 @@ function App() {
               options={FILTER_OPTIONS}
               onClick={onFilterItemClick}
             >
-              <FilterBtn value={filterValue}></FilterBtn>
+              <FilterBtn option={filterOption}></FilterBtn>
             </Dropdown>
           }
         ></Search>
         <Table
           rowClassName="rowClassName"
-          data={data}
+          data={paginatedData}
           columns={columns}
         ></Table>
-        <Pagination></Pagination>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          setCurrentPage={setCurrentPage}
+        />
       </div>
     </div>
   );

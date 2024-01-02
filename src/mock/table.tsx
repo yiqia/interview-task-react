@@ -14,7 +14,7 @@ const columns: ColumnProps<User>[] = [
   { key: "Remark", title: "Category", width: 50 },
 ];
 
-interface User {
+export interface User {
   Id: string;
   Name: string;
   Category: string;
