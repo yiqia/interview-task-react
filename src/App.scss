@@ -12,6 +12,7 @@ body {
   display: flex;
   justify-content: center;
 }
+
 .table-container {
   display: flex;
   background-color: #fff;
@@ -19,6 +20,7 @@ body {
   padding: 26px 60px;
   box-sizing: border-box;
 }
+
 .rowClassName {
   color: #000;
   font-size: 18px;
@@ -32,24 +34,19 @@ body {
   border-radius: 30px;
   background: #f1f2f2;
   height: 60px;
+  margin-bottom: 52px;
+  margin-top: 36px;
+
   &-icon {
     width: 24px;
     height: 24px;
     padding-left: 24px;
   }
+
   &-input {
     background: #f1f2f2;
     border: none;
     height: 24px;
     font-size: 20px;
-  }
-  &-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 189px;
-    padding: 13px 16px;
-    background-color: #fff;
-    border-radius: 9999px;
   }
 }

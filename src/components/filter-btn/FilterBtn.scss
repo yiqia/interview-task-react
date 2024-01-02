@@ -1,0 +1,26 @@
+.filter-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 189px;
+  padding: 13px 16px;
+  background-color: #fff;
+  border-radius: 9999px;
+  cursor: pointer;
+  user-select: none;
+
+  &__text {
+    color: #000;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+  }
+
+  &__icon {
+    &--up {
+      transform: rotate(180deg);
+    }
+  }
+}

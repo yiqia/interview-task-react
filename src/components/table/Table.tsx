@@ -1,9 +1,10 @@
+import { useCallback, useMemo } from "react";
 import classNames from "classnames";
+
 import { isFunction } from "../utils";
 import { ColumnProps, TableProps, rowClassNameFnType } from "./interface";
-import { useCallback, useMemo } from "react";
 
-import "./table.scss";
+import "./Table.scss";
 
 const Table = <T extends { [key: string]: any }>({
   data = [],

@@ -1,8 +1,13 @@
-import { useMemo, useState } from "react";
+import { ReactNode, useMemo, useState } from "react";
 
 import Table from "./components/table";
 import Search from "./components/search";
+import FilterBtn from "./components/filter-btn";
 import Pagination from "./components/pagination";
+import { DropdownItemClickType } from "./components/dropdown/DropdownMenu";
+import Dropdown from "./components/dropdown";
+import { FILTER_OPTIONS } from "./constants/filter";
+
 import { columns, data } from "./mock/table";
 
 import "./App.scss";
@@ -13,9 +18,17 @@ function App() {
     setSearchValue(value);
   };
 
+  const [filterValue, setFilterValue] = useState<ReactNode | string>(
+    FILTER_OPTIONS[0].content
+  );
+
   useMemo(() => {
     console.log(searchValue);
   }, [searchValue]);
+
+  const onFilterItemClick: DropdownItemClickType = (item) => {
+    setFilterValue(item.content);
+  };
 
   return (
     <div className="app">
@@ -27,7 +40,15 @@ function App() {
           prefixIcon={
             <img className="search-icon" src="/public/icons/search.svg"></img>
           }
-          suffixContent={<button className="search-btn">搜索</button>}
+          suffixContent={
+            <Dropdown
+              align="right"
+              options={FILTER_OPTIONS}
+              onClick={onFilterItemClick}
+            >
+              <FilterBtn value={filterValue}></FilterBtn>
+            </Dropdown>
+          }
         ></Search>
         <Table
           rowClassName="rowClassName"
